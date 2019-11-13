@@ -7,6 +7,10 @@
 #ifndef _TYPES_H
 #define _TYPES_H
 
+#include <stdint.h>
+
+#include "blob.h"
+#include "fido.h"
 #include "packed.h"
 
 /* COSE ES256 (ECDSA over P-256 with SHA-256) public key */

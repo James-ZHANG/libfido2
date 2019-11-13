@@ -16,10 +16,10 @@
 #include <unistd.h>
 #endif
 
-#include "../openbsd-compat/openbsd-compat.h"
+#include <err.h>
 
+#include "examples/util.h"
 #include "fido.h"
-#include "extern.h"
 
 #ifdef SIGNAL_EXAMPLE
 extern volatile sig_atomic_t got_signal;
