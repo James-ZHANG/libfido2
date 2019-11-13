@@ -8,9 +8,10 @@
 #define _FIDO_RS256_H
 
 #include <openssl/rsa.h>
-
 #include <stdint.h>
 #include <stdlib.h>
+
+#include "types.h"
 
 rs256_pk_t *rs256_pk_new(void);
 void rs256_pk_free(rs256_pk_t **);

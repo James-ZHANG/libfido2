@@ -1,0 +1,46 @@
+load("//devtools/copybara/library/workflow", "exclude_paths", "git_to_third_party")
+
+git_to_third_party(
+    url = "https://github.com/Yubico/libfido2",
+    git_files = exclude_paths([".gitignore"]),
+    google3_path = "third_party/libfido2",
+)
+
+PIPER_SRC_FILES = glob([
+    "google3/third_party/libfido2/**/*.c",
+    "google3/third_party/libfido2/**/*.h",
+])
+
+AUTHORING = authoring.whitelisted(
+    default = "Google security-key team <gnubby-dev@google.com>",
+    whitelist = [
+        "yzhangad",
+        "yujianz",
+    ],
+)
+
+TRANSFORMATIONS = [core.move("google3/third_party/libfido2", "")] + [
+    leakr.check(),
+]
+
+# Workflow for moving changes from piper to Yubico github repo
+core.workflow(
+    name = "piper_to_github",
+    origin = piper.origin(pending_cl = True),
+    origin_files = PIPER_SRC_FILES,
+    destination = git.github_pr_destination(
+        url = "https://github.com/Yubico/libfido2",
+    ),
+    mode = "CHANGE_REQUEST",
+    authoring = AUTHORING,
+    transformations = TRANSFORMATIONS,
+)
+
+core.workflow(
+    name = "folder_to_folder",
+    origin = folder.origin(),
+    origin_files = PIPER_SRC_FILES,
+    destination = folder.destination(),
+    authoring = AUTHORING,
+    transformations = TRANSFORMATIONS,
+)

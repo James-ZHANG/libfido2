@@ -10,8 +10,10 @@
 #include <stdint.h>
 #include <stdlib.h>
 
+#include "blob.h"
 #include "fido/err.h"
 #include "fido/param.h"
+#include "types.h"
 
 #ifdef _FIDO_INTERNAL
 struct fido_bio_template {

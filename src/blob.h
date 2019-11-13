@@ -7,6 +7,10 @@
 #ifndef _BLOB_H
 #define _BLOB_H
 
+#include <stdlib.h>
+
+#include "third_party/libcbor/cbor.h"
+
 typedef struct fido_blob {
 	unsigned char	*ptr;
 	size_t		 len;

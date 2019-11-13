@@ -8,9 +8,10 @@
 #define _FIDO_EDDSA_H
 
 #include <openssl/ec.h>
-
 #include <stdint.h>
 #include <stdlib.h>
+
+#include "types.h"
 
 eddsa_pk_t *eddsa_pk_new(void);
 void eddsa_pk_free(eddsa_pk_t **);

@@ -4,6 +4,10 @@
  * license that can be found in the LICENSE file.
  */
 
+#include "util.h"
+
+#include <err.h>
+
 #include <sys/types.h>
 #include <sys/stat.h>
 
@@ -27,13 +31,11 @@
 #include "../openbsd-compat/posix_win.h"
 #endif
 
-#include "../openbsd-compat/openbsd-compat.h"
 
 #include "fido.h"
 #include "fido/es256.h"
 #include "fido/rs256.h"
 #include "fido/eddsa.h"
-#include "extern.h"
 
 #ifdef SIGNAL_EXAMPLE
 volatile sig_atomic_t got_signal = 0;
